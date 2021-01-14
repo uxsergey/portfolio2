@@ -1,0 +1,37 @@
+{
+    "short_name": "UX Sergey Portfolio",
+    "name": "UX Sergey",
+    "scope": "/",
+    "lang": "en",
+    "description": "Sergey Sudilovsky | UX Portfolio",
+    "display": "standalone",
+    "start_url": "uxsergey.io",
+    "background_color": "#00aae7",
+    "theme_color": "#00aae7",
+    "dir": "ltr",
+    "orientation": "any",
+    "prefer_related_applications": "false",
+    "icons": [{
+            "src": "./img/icons/64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/128x128.png",
+            "sizes": "128x128",
+            "type": "image/png"
+        },
+        {
+            "src": "./img/icons/256x256.png",
+            "sizes": "256x256",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "./img/icons/512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+
+}
