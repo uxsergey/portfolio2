@@ -2,11 +2,14 @@
 @import "vars/colors";
 @import "vars/sizes";
 //mixins
+@import"mixins/mixins";
 //Basics
 @import "base/basics";
 @import "base/grid";
 @import "base/fonts";
 @import "base/animations";
+//Ellements
+@import "elements/elements";
 //Content
 @import "blocks/content/content";
 @import "blocks/content/hero";

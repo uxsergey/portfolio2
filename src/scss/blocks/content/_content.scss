@@ -1,0 +1,24 @@
+.content {
+    grid-area: content;
+    display: grid;
+    grid-template-areas: 'about' 'service' 'works';
+    padding: 0 1em;
+    &_center {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        height: 100vh;
+    }
+}
+
+.about {
+    grid-area: about;
+}
+
+.service {
+    grid-area: service;
+}
+
+.works {
+    grid-area: works;
+}

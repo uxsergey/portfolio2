@@ -16,7 +16,6 @@ let path = {
         script: './' + `js/${scriptsFileName}`
     },
     src: {
-
         html: source_folder + "/**/*.html",
         css: source_folder + "/scss/style.scss",
         js: source_folder + "/js/main.js",
@@ -44,15 +43,15 @@ let gulp = require("gulp");
 let browserSync = require("browser-sync").create();
 let fileinclude = require("gulp-file-include");
 let del = require("del");
+let uglify = require("gulp-uglify");
 let scss = require("gulp-sass");
 let autoprefixer = require("gulp-autoprefixer");
 let sourcemaps = require("gulp-sourcemaps");
 let groupMedia = require("gulp-group-css-media-queries");
-let uglify = require("gulp-uglify");
-let inject = require("gulp-inject-string");
+let inject = require('gulp-inject-string');
 let rename = require('gulp-rename');
-let cleancss = require('gulp-clean-css');
-let concat = require('gulp-concat');
+let cleancss = require("gulp-clean-css");
+let concat = require("gulp-concat");
 let imagemin = require("gulp-imagemin");
 let cheerio = require("gulp-cheerio");
 let svgSprite = require("gulp-svg-sprite");
@@ -60,22 +59,10 @@ let ttf2woff = require("gulp-ttf2woff");
 let ttf2woff2 = require("gulp-ttf2woff2");
 let fonter = require("gulp-fonter");
 let babel = require("gulp-babel");
+let rigger = require("gulp-rigger");
 
 
 let fs = require("fs");
-
-//Rollup
-let source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-    rollup = require('@rollup/stream'),
-
-    // *Optional* Depends on what JS features you want vs what browsers you need to support
-    // *Not needed* for basic ES6 module import syntax support
-    babelRoll = require('@rollup/plugin-babel'),
-    commonjs = require('@rollup/plugin-commonjs');
-// Add support for importing from node_modules folder like import x from 'module-name
-let { nodeResolve } = require('@rollup/plugin-node-resolve');
-let rollupMain = require('rollup');
 
 
 // ===========================================================================
@@ -88,9 +75,10 @@ gulp.task("html", function() { // setting html
             prefix: '@',
             basepath: '@file'
         }))
+        .pipe(rigger())
         .pipe(
             inject.after('</title>',
-                `<link rel="stylesheet" href="${path.build.style}" />`)
+                `<link rel="stylesheet" href="${path.build.style}"/link> \n`)
         )
         .pipe(
             inject.wrap('</body',
@@ -101,20 +89,51 @@ gulp.task("html", function() { // setting html
 
 });
 
+
+
+
+
+gulp.task("js", function() {
+    // setting js
+    return gulp.src(["src/js/*.js", "./js/modules/*.js"])
+        .pipe(rigger())
+        // .pipe(fileinclude({
+        //     prefix: '@',
+        //     basepath: '@file'
+        // }))
+        // .pipe(babel({
+        //     presets: ["@babel/preset-env"]
+        // }))
+        .pipe(sourcemaps.init())
+        // .pipe(uglify())
+        .pipe(sourcemaps.write('*.map.js'))
+        .pipe(rename('scripts.min.js'))
+        .pipe(gulp.dest(path.build.js))
+        .pipe(browserSync.stream());
+
+});
+
+
+
+
+
 //Styles Task
 gulp.task("css", function() { // setting css
     return gulp.src(path.src.css)
-        .pipe(sourcemaps.init())
-        .pipe(
+
+    .pipe(sourcemaps.init())
+
+    .pipe(
             scss({
                 outputStyle: "expanded", //compressed
+                includePaths: require("node-normalize-scss").includePaths
             })
         )
         .pipe(groupMedia())
         .pipe(rename({ suffix: '.min', prefix: '' }))
         .pipe(autoprefixer({
-            overrideBrowserslist: ["defaults"],
-            cascade: true,
+            browsers: ['last 2 versions'],
+            cascade: false
         }))
         .pipe(cleancss({ level: { 1: { specialComments: 0 } } }))
         .pipe(gulp.dest(path.build.css))
@@ -122,88 +141,6 @@ gulp.task("css", function() { // setting css
 
 });
 
-
-//JS Task
-gulp.task('js', function() {
-    return rollup({
-            // Point to the entry file
-            input: path.src.js,
-
-            // Apply plugins
-            plugins: [
-                uglify(),
-                rename(function(path) {
-                    if (path.extname === '.js') {
-                        path.basename += '.min';
-                    }
-                }),
-                babel(),
-                commonjs({
-                    include: 'node_modules/**',
-                }),
-                nodeResolve({
-                    mainFields: ['modules'],
-                })
-            ],
-
-            // Enable source maps support
-            sourcemap: true,
-
-            // Use cache for better performance
-            // cache: cache,
-
-            // Note: these options are placed at the root level in older versions of Rollup
-            output: {
-
-                // Output bundle is intended for use in browsers
-                // (iife = "Immediately Invoked Function Expression")
-                format: 'iife',
-
-                // Show source code when debugging in browser
-                sourcemap: true
-
-            }
-        })
-        .on('bundle', function(bundle) {
-            // Update cache data after every bundle is created
-            cache = bundle;
-        })
-        // Name of the output file.
-        .pipe(source('scripts.js'))
-        .pipe(buffer())
-
-    // The use of sourcemaps here might not be necessary, 
-    // Gulp 4 has some native sourcemap support built in
-    .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sourcemaps.write('.'))
-
-    // Where to send the output file
-
-    .pipe(gulp.dest(path.build.js))
-        .pipe(browserSync.stream());
-});
-
-
-
-
-
-// gulp.task("js", function() {
-//     // setting js
-//     return gulp.src([path.src.js, path.src.modules])
-
-//     .pipe(fileinclude({
-//             prefix: '@',
-//             basepath: '@file'
-//         }))
-//         .pipe(babel({
-//             presets: ["@babel/preset-env"]
-//         }))
-//         .pipe(concat('scripts.min.js'))
-//         .pipe(uglify())
-//         .pipe(gulp.dest(path.build.js))
-//         .pipe(browserSync.stream());
-
-// });
 
 gulp.task("img", function() { // setting image
     return gulp.src(path.src.img)

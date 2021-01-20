@@ -1,0 +1,15 @@
+.logo {
+    width: 32px;
+    height: 32px;
+    background: var(--primary);
+}
+
+.navigation {
+    ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        gap: 20px
+    }
+}

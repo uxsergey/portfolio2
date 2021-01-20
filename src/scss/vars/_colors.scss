@@ -1,3 +1,37 @@
 :root {
-    --blue: #3467f3;
+    //White
+    --white-h: 225;
+    --white-s: 1%;
+    --white-l: 95%;
+    //Black
+    --black-h: 225;
+    --black-s: 100%;
+    --black-l: 5%;
+    //primary
+    --primary-h: 241;
+    --primary-s: 100%;
+    --primary-l: 57%;
+    //secondary
+    --secondary-h: 14;
+    --secondary-s: 92%;
+    --secondary-l: 54%;
+    //accent
+    --accent-h: 45;
+    --accent-s: 100%;
+    --accent-l: 50%;
+    //Lightness calc
+    --lightness: 10%;
+    --darkness: 15;
+    //Gray
+    --black-light-l: calc(var(--black-l)+var(--lightness));
+}
+
+:root,
+[data-theme='Light'] {
+    --white: hsl(var(--white-h), var(--white-s), var(--white-l));
+    --black: hsl(var(--black-h), var(--black-s), var(--black-l));
+    --secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+    --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+    --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+    --gray: hsl(var(--black-h), var(--black-s), var(--black-light-l));
 }

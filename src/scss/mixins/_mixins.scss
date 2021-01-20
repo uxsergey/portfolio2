@@ -1,12 +1,16 @@
-@mixin font($fname, $fstyle, $fweight, $furl) {
+//Fontface mixin
+@mixin font-face($font-family, $url, $weight) {
     @font-face {
-        font-family: $fname;
-        font-style: $fstyle;
-        font-weight: $fweight;
-        src: url($furl) format('woff2');
+        font-family: "#{$font-family}";
+        src: url("../fonts/#{$url}.woff") format("woff"),
+        url("../fonts/#{$url}.woff2") format("woff2");
+        font-weight: #{$weight};
+        font-display: swap;
+        font-style: normal;
     }
 }
 
+//Media query
 @mixin for-size($size) {
     @if $size==phone-only {
         @media (max-width: 599px) {
@@ -34,3 +38,6 @@
         }
     }
 }
+
+//CSS variables:
+//1) Colors HSL

@@ -1,0 +1,49 @@
+.sidebar {
+    grid-area: sidebar;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    .sidebar-container {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .sidebar-inner {
+            display: flex;
+            transform: rotate(270deg);
+            .sidebar-nav {
+                width: 15em; //Todo (sizes)
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                align-items: center;
+                justify-content: space-between;
+                white-space: nowrap;
+                .scroll-indicator {
+                    overflow: hidden;
+                    height: 2px;
+                    width: 100%;
+                    background-color: var(--balck);
+                    .progress-bar {
+                        background: var(--gray);
+                        height: 2px;
+                        width: 0%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.indicator-names {
+    list-style: none;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    .off {
+        display: none;
+    }
+    .active {
+        display: block;
+    }
+}
