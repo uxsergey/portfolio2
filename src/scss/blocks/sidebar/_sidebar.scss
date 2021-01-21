@@ -23,9 +23,9 @@
                     overflow: hidden;
                     height: 2px;
                     width: 100%;
-                    background-color: var(--balck);
+                    background-color: hsl (var(--gray));
                     .progress-bar {
-                        background: var(--gray);
+                        background: hsl (var(--black));
                         height: 2px;
                         width: 0%;
                     }

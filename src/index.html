@@ -9,20 +9,24 @@
 </head>
 
 <body role="document" data-theme="light">
-    <header class="header" data-theme="light" role="heading">
-        <div class="logo" role="logo"></div>
-        <nav role="navigation" aria-label="Main" class="header navigation">
-            <ul>
-                <li><a href="">link 1</a></li>
-                <li><a href="">link 2</a></li>
-                <li><a href="">link 3</a></li>
-            </ul>
-        </nav>
+    <header class="header sticky" data-theme="light" role="heading">
+        <div class="header_container">
+            <div class="logo" role="logo"></div>
+            <nav role="navigation" aria-label="Main" class=" navigation">
+                <ul>
+                    <li><a href="">link 1</a></li>
+                    <li><a href="">link 2</a></li>
+                    <li><a href="">link 3</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <!-- <section data-theme="light" class="hero" role="banner">
-        <h1>Hello world!</h1>
-        <h3>I'm multidisciplinary UI Designer based in Frankfurt</h3>
-    </section> -->
+    <section data-theme="light" class="hero " role="banner">
+        <div class="hero-container">
+            <h1>Hello world!</h1>
+            <h3>I'm multidisciplinary UI Designer based in Frankfurt</h3>
+        </div>
+    </section>
     <main data-theme="light" class="grid grid_main">
         <aside class="sidebar">
             <div class="sidebar-container">
@@ -43,17 +47,17 @@
             </div>
         </aside>
         <div class="content">
-            <article class="about content_center">
+            <div class="about content_center">
                 <h2>About me</h2>
-            </article>
-            <article class="service content_center">
+            </div>
+            <div class="service content_center">
                 <h2>Services</h2>
-            </article>
-            <article class="works content_center">
+            </div>
+            <div class="works content_center">
                 <h2>Cases</h2>
-            </article>
+            </div>
         </div>
-        <!-- <section class="content">
+        <section class="content">
             <article class="about content_center">
                 <h2>About me</h2>
             </article>
@@ -63,7 +67,7 @@
             <article class="works content_center">
                 <h2>Cases</h2>
             </article>
-        </section> -->
+        </section>
         <footer class="footer">
             <div class="footer-contaier">
                 <div class="logo"></div>
