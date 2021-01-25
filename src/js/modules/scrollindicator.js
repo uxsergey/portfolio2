@@ -5,4 +5,4 @@ window.addEventListener('scroll', () => {
         scroll = (windowScroll / height) * 100;
     document.querySelector('.progress-bar').style.width = scroll + '%';
     console.log(scroll);
-})
+});

@@ -1,7 +1,15 @@
 .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 32px;
     height: 32px;
-    background: var(--primary);
+    mix-blend-mode: exclusion;
+    svg {
+        display: block;
+        width: 100%;
+        fill: #fff;
+    }
 }
 
 .navigation {

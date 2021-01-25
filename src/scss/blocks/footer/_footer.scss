@@ -1,6 +1,9 @@
 .footer {
+    background: var(--accent);
     grid-column-start: 1;
     grid-column-end: 3;
+    display: sticky;
+    bottom: 0;
     padding: 10px 15px;
     .footer-contaier {
         display: flex;

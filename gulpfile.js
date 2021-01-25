@@ -43,7 +43,7 @@ let gulp = require("gulp");
 let browserSync = require("browser-sync").create();
 let fileinclude = require("gulp-file-include");
 let del = require("del");
-let uglify = require("gulp-uglify");
+let uglify = require('gulp-uglify');
 let scss = require("gulp-sass");
 let autoprefixer = require("gulp-autoprefixer");
 let sourcemaps = require("gulp-sourcemaps");
@@ -95,18 +95,20 @@ gulp.task("html", function() { // setting html
 
 gulp.task("js", function() {
     // setting js
-    return gulp.src(["src/js/*.js", "./js/modules/*.js"])
-        .pipe(rigger())
-        // .pipe(fileinclude({
-        //     prefix: '@',
-        //     basepath: '@file'
-        // }))
+    return gulp.src([path.src.js, path.src.modules])
+
+    .pipe(rigger())
+        .pipe(sourcemaps.init())
+
+    .pipe(fileinclude({
+            prefix: '@',
+            basepath: '@file'
+        }))
         // .pipe(babel({
         //     presets: ["@babel/preset-env"]
         // }))
-        .pipe(sourcemaps.init())
-        // .pipe(uglify())
-        .pipe(sourcemaps.write('*.map.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write())
         .pipe(rename('scripts.min.js'))
         .pipe(gulp.dest(path.build.js))
         .pipe(browserSync.stream());
@@ -132,7 +134,7 @@ gulp.task("css", function() { // setting css
         .pipe(groupMedia())
         .pipe(rename({ suffix: '.min', prefix: '' }))
         .pipe(autoprefixer({
-            browsers: ['last 2 versions'],
+            overrideBrowserslist: ['last 2 versions'],
             cascade: false
         }))
         .pipe(cleancss({ level: { 1: { specialComments: 0 } } }))

@@ -3,7 +3,7 @@
     display: grid;
     grid-template-areas: 'about' 'service' 'works';
     grid-template-rows: repeat(3, 100vh);
-    padding: 0 1em;
+    // padding: 0 1em;
     &_center {
         display: flex;
         justify-content: center;
@@ -13,6 +13,44 @@
 
 .about {
     grid-area: about;
+    ;
+    .color-test {
+        display: flex;
+        .box {
+            width: 50px;
+            height: 50px;
+        }
+        .c-900 {
+            background: var(--success-900);
+        }
+        .c-800 {
+            background: var(--success-800);
+        }
+        .c-700 {
+            background: var(--success-700);
+        }
+        .c-600 {
+            background: var(--success-600);
+        }
+        .c-500 {
+            background: var(--success-500);
+        }
+        .c-400 {
+            background: var(--success-400);
+        }
+        .c-300 {
+            background: var(--success-300);
+        }
+        .c-200 {
+            background: var(--success-200);
+        }
+        .c-100 {
+            background: var(--success-100);
+        }
+        .c-50 {
+            background: var(--success-50);
+        }
+    }
 }
 
 .service {

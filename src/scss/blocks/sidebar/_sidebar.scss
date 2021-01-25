@@ -2,17 +2,31 @@
     grid-area: sidebar;
     position: sticky;
     top: 0;
-    height: 100vh;
+    @include for-size (tablet-portrait-up) {
+        height: 100vh;
+    }
+    @include for-size (phone-only) {
+        width: 100%;
+        position: sticky;
+        top: 3em;
+    }
     .sidebar-container {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        .sidebar-inner {
+        @include for-size (tablet-portrait-up) {
+            height: 100%;
             display: flex;
-            transform: rotate(270deg);
+            justify-content: center;
+            align-items: center;
+        }
+        @include for-size (phone-only) {
+            padding-left: 1em;
+        }
+        .sidebar-inner {
+            @include for-size (tablet-portrait-up) {
+                display: flex;
+                transform: rotate(270deg);
+            }
             .sidebar-nav {
-                width: 15em; //Todo (sizes)
+                width: 15em;
                 display: flex;
                 flex-direction: row;
                 gap: 10px;
@@ -23,9 +37,9 @@
                     overflow: hidden;
                     height: 2px;
                     width: 100%;
-                    background-color: hsl (var(--gray));
+                    background-color: var(--gray-50);
                     .progress-bar {
-                        background: hsl (var(--black));
+                        background: var(--primary-300);
                         height: 2px;
                         width: 0%;
                     }
