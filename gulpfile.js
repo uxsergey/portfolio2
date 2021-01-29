@@ -21,7 +21,7 @@ let path = {
         js: source_folder + "/js/main.js",
         modules: source_folder + "/js/modules/*.js",
         img: source_folder + "/img/**/*.+(png|jpg|gif|ico|svg|webp)",
-        fonts: source_folder + "/fonts/*.ttf"
+        fonts: source_folder + "/fonts/*.(ttf|otf|woff|svg)"
     },
 
     watch: {
@@ -96,23 +96,20 @@ gulp.task("html", function() { // setting html
 gulp.task("js", function() {
     // setting js
     return gulp.src([path.src.js, path.src.modules])
-
-    .pipe(rigger())
+        .pipe(rigger())
         .pipe(sourcemaps.init())
-
-    .pipe(fileinclude({
+        .pipe(fileinclude({
             prefix: '@',
             basepath: '@file'
         }))
-        // .pipe(babel({
-        //     presets: ["@babel/preset-env"]
-        // }))
+        .pipe(babel({
+            presets: ["@babel/preset-env"]
+        }))
         .pipe(uglify())
-        .pipe(sourcemaps.write())
-        .pipe(rename('scripts.min.js'))
+        .pipe(sourcemaps.write('maps'))
+        .pipe(concat('scripts.min.js'))
         .pipe(gulp.dest(path.build.js))
         .pipe(browserSync.stream());
-
 });
 
 
@@ -122,10 +119,8 @@ gulp.task("js", function() {
 //Styles Task
 gulp.task("css", function() { // setting css
     return gulp.src(path.src.css)
-
-    .pipe(sourcemaps.init())
-
-    .pipe(
+        .pipe(sourcemaps.init())
+        .pipe(
             scss({
                 outputStyle: "expanded", //compressed
                 includePaths: require("node-normalize-scss").includePaths
@@ -158,22 +153,25 @@ gulp.task("img", function() { // setting image
         .pipe(browserSync.stream());
 });
 
-gulp.task('otf', async function() { // setting .otf to .ttf
+gulp.task('otf', function() { // setting .otf to .ttf
     gulp.src([source_folder + "/fonts/*.otf"])
-        .pipe(fonter({ formats: ['ttf'] }))
+        .pipe(fonter({ formats: ["ttf", "eot", "woff", "svg"] }))
         .pipe(gulp.dest(path.build.fonts));
-
 });
 
-gulp.task('fonts', async function() { // setting fonts => .ttf to .woff and .woff2
-    gulp.src(path.src.fonts)
-        .pipe(ttf2woff())
-        .pipe(gulp.dest(path.build.fonts));
-    gulp.src(path.src.fonts)
-        .pipe(ttf2woff2())
-        .pipe(gulp.dest(path.build.fonts));
+gulp.task('fonts', async function() { // setting fonts
+        return gulp.src(path.src.fonts)
+            .pipe(gulp.dest(path.build.fonts));
+    })
+    // gulp.task('fonts', function() { // setting fonts => .ttf to .woff and .woff2
+    //     gulp.src(path.src.fonts)
+    //         .pipe(ttf2woff())
+    //         .pipe(gulp.dest(path.build.fonts));
+    //     gulp.src(path.src.fonts)
+    //         .pipe(ttf2woff2())
+    //         .pipe(gulp.dest(path.build.fonts));
 
-});
+// });
 
 gulp.task("svg", function() { // "gulp svg"
     return gulp.src([source_folder + "/img/svg/**/*.svg"])
@@ -193,7 +191,7 @@ gulp.task("svg", function() { // "gulp svg"
                 mode: {
                     stack: {
                         sprite: "../sprite.svg",
-                        example: true,
+
                     },
                 },
             })
@@ -206,7 +204,7 @@ gulp.task("browser-sync", function() { // setting browser
         server: {
             baseDir: "./" + project_folder + "/",
         },
-        port: 3000,
+        port: 8000,
         browser: ["chrome", "firefox"],
         notify: false,
     });

@@ -1,240 +1,32 @@
-                    .content {
-                        grid-area: content;
-                        display: grid;
-                        grid-template-areas: 'about' 'service' 'works';
-                        grid-template-rows: repeat(3, 100vh);
-                        // padding: 0 1em;
-                        &_center {
-                            display: flex;
-                            justify-content: center;
-                            flex-direction: column;
-                        }
-                    }
-                    
-                    .about {
-                        grid-area: about;
-                        ;
-                        .color-test {
-                            display: flex;
-                            flex-direction: column;
-                            .row {
-                                display: flex;
-                                flex-direction: row;
-                            }
-                            .box {
-                                width: 50px;
-                                height: 50px;
-                            }
-                            .gray {
-                                .c-50 {
-                                    background: var(--gray-50);
+                                .content {
+                                    grid-area: content;
+                                    display: grid;
+                                    @include for-size (phone-only) {
+                                        min-width: calc(100% - 20px);
+                                        margin: 0 auto;
+                                    }
+                                    @include for-size (tablet-portrait-up) {
+                                        min-width: calc(100% - 40px);
+                                        margin: 0 auto;
+                                    }
+                                    grid-template-areas: 'about' 'service' 'works';
+                                    grid-template-rows: repeat(3, 1fr);
+                                    // padding: 0 1em;
+                                    &_center {
+                                        display: flex;
+                                        justify-content: center;
+                                        flex-direction: column;
+                                    }
                                 }
-                                .c-100 {
-                                    background: var(--gray-100);
+                                
+                                .about {
+                                    grid-area: about;
                                 }
-                                .c-200 {
-                                    background: var(--gray-200);
-                                    ;
+                                
+                                .service {
+                                    grid-area: service;
                                 }
-                                .c-300 {
-                                    background: var(--gray-300);
-                                    ;
+                                
+                                .works {
+                                    grid-area: works;
                                 }
-                                .c-400 {
-                                    background: var(--gray-400);
-                                    ;
-                                }
-                                .c-500 {
-                                    background: var(--gray-500);
-                                    ;
-                                }
-                                .c-600 {
-                                    background: var(--gray-600);
-                                    ;
-                                }
-                                .c-700 {
-                                    background: var(--gray-700);
-                                    ;
-                                }
-                                .c-800 {
-                                    background: var(--gray-800);
-                                    ;
-                                }
-                                .c-900 {
-                                    background: var(--gray-900);
-                                    ;
-                                }
-                            }
-                            .primary {
-                                .c-50 {
-                                    background: var(--primary-50);
-                                }
-                                .c-100 {
-                                    background: var(--primary-100);
-                                }
-                                .c-200 {
-                                    background: var(--primary-200);
-                                    ;
-                                }
-                                .c-300 {
-                                    background: var(--primary-300);
-                                    ;
-                                }
-                                .c-400 {
-                                    background: var(--primary-400);
-                                    ;
-                                }
-                                .c-500 {
-                                    background: var(--primary-500);
-                                    ;
-                                }
-                                .c-600 {
-                                    background: var(--primary-600);
-                                    ;
-                                }
-                                .c-700 {
-                                    background: var(--primary-700);
-                                    ;
-                                }
-                                .c-800 {
-                                    background: var(--primary-800);
-                                    ;
-                                }
-                                .c-900 {
-                                    background: var(--primary-900);
-                                    ;
-                                }
-                            }
-                            .success {
-                                grid-area: success;
-                                .c-50 {
-                                    background: var(--success-50);
-                                }
-                                .c-100 {
-                                    background: var(--success-100);
-                                }
-                                .c-200 {
-                                    background: var(--success-200);
-                                    ;
-                                }
-                                .c-300 {
-                                    background: var(--success-300);
-                                    ;
-                                }
-                                .c-400 {
-                                    background: var(--success-400);
-                                    ;
-                                }
-                                .c-500 {
-                                    background: var(--success-500);
-                                    ;
-                                }
-                                .c-600 {
-                                    background: var(--success-600);
-                                    ;
-                                }
-                                .c-700 {
-                                    background: var(--success-700);
-                                    ;
-                                }
-                                .c-800 {
-                                    background: var(--success-800);
-                                    ;
-                                }
-                                .c-900 {
-                                    background: var(--success-900);
-                                    ;
-                                }
-                            }
-                            .secondary {
-                                grid-area: secondary;
-                                .c-50 {
-                                    background: var(--secondary-50);
-                                }
-                                .c-100 {
-                                    background: var(--secondary-100);
-                                }
-                                .c-200 {
-                                    background: var(--secondary-200);
-                                    ;
-                                }
-                                .c-300 {
-                                    background: var(--secondary-300);
-                                    ;
-                                }
-                                .c-400 {
-                                    background: var(--secondary-400);
-                                    ;
-                                }
-                                .c-500 {
-                                    background: var(--secondary-500);
-                                    ;
-                                }
-                                .c-600 {
-                                    background: var(--secondary-600);
-                                    ;
-                                }
-                                .c-700 {
-                                    background: var(--secondary-700);
-                                    ;
-                                }
-                                .c-800 {
-                                    background: var(--secondary-800);
-                                    ;
-                                }
-                                .c-900 {
-                                    background: var(--secondary-900);
-                                    ;
-                                }
-                            }
-                            .accent {
-                                grid-area: accent;
-                                .c-50 {
-                                    background: var(--accent-50);
-                                }
-                                .c-100 {
-                                    background: var(--accent-100);
-                                }
-                                .c-200 {
-                                    background: var(--accent-200);
-                                    ;
-                                }
-                                .c-300 {
-                                    background: var(--accent-300);
-                                    ;
-                                }
-                                .c-400 {
-                                    background: var(--accent-400);
-                                    ;
-                                }
-                                .c-500 {
-                                    background: var(--accent-500);
-                                    ;
-                                }
-                                .c-600 {
-                                    background: var(--accent-600);
-                                    ;
-                                }
-                                .c-700 {
-                                    background: var(--accent-700);
-                                    ;
-                                }
-                                .c-800 {
-                                    background: var(--accent-800);
-                                    ;
-                                }
-                                .c-900 {
-                                    background: var(--accent-900);
-                                    ;
-                                }
-                            }
-                        }
-                    }
-                    
-                    .service {
-                        grid-area: service;
-                    }
-                    
-                    .works {
-                        grid-area: works;
-                    }

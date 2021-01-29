@@ -11,32 +11,31 @@
     --black-s: 10%;
     --black-l: 5%;
     //primary
-    --primary-h: 235;
+    --primary-h: 240;
     --primary-s: 100%;
-    --primary-l: 20%;
+    --primary-l: 40%;
     //secondary
     --secondary-h: 0;
     --secondary-s: 100%;
-    --secondary-l: 20%;
+    --secondary-l: 40%;
     //accent
     --accent-h: 25;
     --accent-s: 100%;
-    --accent-l: 20%;
+    --accent-l: 40%;
     //success
     --success-h: 120;
     --success-s: 100%;
-    --success-l: 20%;
+    --success-l: 40%;
 }
 
  :root,
 [data-theme='default'] {
-    --count: 40;
+    --count: 44;
     --step-h: calc(360 / var(--count));
-    --step: 8.5%;
-    --color-strat: 15%;
+    --step: 7.8%;
+    --color-strat: 20%;
     //cusom hue
     --gray-h: var(--black-h);
-    --primary-hue: calc(var(--primary-h) + var(--step-h));
     --success-hue: calc(var(--success-h) + calc(var(--step-h) * 1.5));
     --secondary-hue: calc( var(--secondary-h) + calc(var(--step-h) * 2));
     --accent-hue: calc( var(--accent-h) + calc(var(--step-h) * 2.5));
@@ -52,16 +51,16 @@
     --lgt-9: calc(var(--lgt-8) + var(--step));
     --lgt-10: calc(var(--lgt-9) + var(--step));
     //gray
-    @include defineColorHSL(--gray-900, var(--gray-h), 10%, var(--lgt-1));
-    @include defineColorHSL(--gray-800, var(--gray-h), 10%, var(--lgt-2));
-    @include defineColorHSL(--gray-700, var(--gray-h), 10%, var(--lgt-3));
-    @include defineColorHSL(--gray-600, var(--gray-h), 10%, var(--lgt-4));
-    @include defineColorHSL(--gray-500, var(--gray-h), 10%, var(--lgt-5));
-    @include defineColorHSL(--gray-400, var(--gray-h), 10%, var(--lgt-6));
-    @include defineColorHSL(--gray-300, var(--gray-h), 10%, var(--lgt-7));
-    @include defineColorHSL(--gray-200, var(--gray-h), 10%, var(--lgt-8));
-    @include defineColorHSL(--gray-100, var(--gray-h), 10%, var(--lgt-9));
-    @include defineColorHSL(--gray-50, var(--gray-h), 10%, var(--lgt-10));
+    @include defineColorHSL(--gray-900, var(--gray-h), 20%, var(--lgt-1));
+    @include defineColorHSL(--gray-800, var(--gray-h), 20%, var(--lgt-2));
+    @include defineColorHSL(--gray-700, var(--gray-h), 20%, var(--lgt-3));
+    @include defineColorHSL(--gray-600, var(--gray-h), 20%, var(--lgt-4));
+    @include defineColorHSL(--gray-500, var(--gray-h), 20%, var(--lgt-5));
+    @include defineColorHSL(--gray-400, var(--gray-h), 20%, var(--lgt-6));
+    @include defineColorHSL(--gray-300, var(--gray-h), 20%, var(--lgt-7));
+    @include defineColorHSL(--gray-200, var(--gray-h), 20%, var(--lgt-8));
+    @include defineColorHSL(--gray-100, var(--gray-h), 20%, var(--lgt-9));
+    @include defineColorHSL(--gray-50, var(--gray-h), 20%, var(--lgt-10));
     //primary
     @include defineColorHSL(--primary-900, var(--primary-h), 100%, var(--lgt-1));
     @include defineColorHSL(--primary-800, var(--primary-h), 100%, var(--lgt-2));
@@ -72,20 +71,20 @@
     @include defineColorHSL(--primary-300, var(--primary-h), 100%, var(--lgt-7));
     @include defineColorHSL(--primary-200, var(--primary-h), 100%, var(--lgt-8));
     @include defineColorHSL(--primary-100, var(--primary-h), 100%, var(--lgt-9));
-    @include defineColorHSL(--primary-50, var(--primary-h), 10%, var(--lgt-10));
+    @include defineColorHSL(--primary-50, var(--primary-h), 100%, var(--lgt-10));
     //success
     @include defineColorHSL(--success-900, var(--success-hue), 100%, var(--lgt-1));
-    @include defineColorHSL(--success-800, var(--success-hue), 100%, var(--lgt-2));
-    @include defineColorHSL(--success-700, var(--success-hue), 100%, var(--lgt-3));
-    @include defineColorHSL(--success-600, var(--success-hue), 100%, var(--lgt-4));
+    @include defineColorHSL(--success-800, var(--success-hue), 90%, var(--lgt-2));
+    @include defineColorHSL(--success-700, var(--success-hue), 95%, var(--lgt-3));
+    @include defineColorHSL(--success-600, var(--success-hue), 85%, var(--lgt-4));
     @include defineColorHSL(--success-500, var(--success-hue), 70%, var(--lgt-5));
-    @include defineColorHSL(--success-400, var(--success-hue), 75%, var(--lgt-6));
+    @include defineColorHSL(--success-400, var(--success-hue), 80%, var(--lgt-6));
     @include defineColorHSL(--success-300, var(--success-hue), 80%, var(--lgt-7));
     @include defineColorHSL(--success-200, var(--success-hue), 85%, var(--lgt-8));
     @include defineColorHSL(--success-100, var(--success-hue), 100%, var(--lgt-9));
     @include defineColorHSL(--success-50, var(--success-hue), 100%, var(--lgt-10));
     //secondary
-    @include defineColorHSL(--secondary-900, var(--secondary-h), 100%, var(--lgt-1));
+    @include defineColorHSL(--secondary-900, var(--secondary-hue), 100%, var(--lgt-1));
     @include defineColorHSL(--secondary-800, var(--secondary-hue), 100%, var(--lgt-2));
     @include defineColorHSL(--secondary-700, var(--secondary-hue), 100%, var(--lgt-3));
     @include defineColorHSL(--secondary-600, var(--secondary-hue), 100%, var(--lgt-4));
@@ -96,11 +95,11 @@
     @include defineColorHSL(--secondary-100, var(--secondary-hue), 100%, var(--lgt-9));
     @include defineColorHSL(--secondary-50, var(--secondary-hue), 100%, var(--lgt-10));
     //accent
-    @include defineColorHSL(--accent-900, var(--accent-h), 100%, var(--lgt-1));
+    @include defineColorHSL(--accent-900, var(--accent-hue), 100%, var(--lgt-1));
     @include defineColorHSL(--accent-800, var(--accent-hue), 100%, var(--lgt-2));
     @include defineColorHSL(--accent-700, var(--accent-hue), 100%, var(--lgt-3));
     @include defineColorHSL(--accent-600, var(--accent-hue), 100%, var(--lgt-4));
-    @include defineColorHSL(--accent-500, var(--accent-hue), 100%, var(--lgt-5));
+    @include defineColorHSL(--accent-500, var(--accent-hue), 90%, var(--lgt-5));
     @include defineColorHSL(--accent-400, var(--accent-hue), 100%, var(--lgt-6));
     @include defineColorHSL(--accent-300, var(--accent-hue), 100%, var(--lgt-7));
     @include defineColorHSL(--accent-200, var(--accent-hue), 100%, var(--lgt-8));
