@@ -1,0 +1,51 @@
+.list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    &-header {
+        @include for-size (phone-only) {
+            display: block;
+            @include font(var(--heading-font), var(--medium), var(--text-xxxxl), var(--gray-900), var(--heading-line-height-xl));
+            text-transform: uppercase;
+            @include font-stroke(var(--gray-100), transparent, 1px);
+            &.active {
+                @include font-stroke(var(--gray-900), var(--gray-900), 1px);
+            }
+        }
+        @include for-size (tablet-portrait-up) {
+            display: none;
+        }
+    }
+    &-description {
+        span {
+            width: 100%;
+            height: 6em;
+            border-bottom: solid 2px var(--gray-50);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: .5em .5em;
+        }
+    }
+    &-big-title {
+        @include for-size (tablet-portrait-up) {
+            li {
+                display: block;
+                width: 100%;
+                .list-link {
+                    @include font(var(--heading-font), var(--medium), var(--text-xxxxl), var(--gray-900), var(--heading-line-height-xl));
+                    text-decoration: none;
+                    text-transform: uppercase;
+                    transition: all 0.2s ease-out;
+                    @include font-stroke(var(--gray-100), transparent, 2px);
+                    &.active {
+                        @include font-stroke(var(--gray-900), var(--gray-900), 2px);
+                    }
+                }
+            }
+        }
+        @include for-size (phone-only) {
+            display: none;
+        }
+    }
+}

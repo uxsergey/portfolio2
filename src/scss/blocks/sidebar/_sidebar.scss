@@ -8,7 +8,8 @@
     @include for-size (phone-only) {
         width: 100%;
         position: sticky;
-        top: 4em;
+        top: 3em;
+        background: alpha(var(--white), 0.5);
     }
     .sidebar-container {
         @include for-size (tablet-portrait-up) {
@@ -29,7 +30,7 @@
                 @include for-size (phone-only) {
                     width: 100%;
                 }
-                width: 15em;
+                @include font(var(--text-font), var(--medium), var(--text-sm), inherit, var(--body-line-height-sm)) width: 15em;
                 display: flex;
                 flex-direction: row;
                 gap: 10px;

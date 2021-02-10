@@ -1,12 +1,17 @@
-<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Arrow">
-<rect width="32" height="32" fill="white"/>
-<g id="circle-arow">
-<g id="arrow">
-<path id="Vector 5 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M15.998 8.5C16.2742 8.5 16.498 8.72386 16.498 9V21.1333C16.498 21.4095 16.2742 21.6333 15.998 21.6333C15.7219 21.6333 15.498 21.4095 15.498 21.1333V9C15.498 8.72386 15.7219 8.5 15.998 8.5Z" fill="#2A2C31"/>
-<path id="Vector 6 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M11.3515 16.4864C11.5468 16.2912 11.8634 16.2912 12.0586 16.4864L15.9984 20.4262L19.9382 16.4864C20.1335 16.2912 20.45 16.2912 20.6453 16.4864C20.8406 16.6817 20.8406 16.9983 20.6453 17.1935L15.9984 21.8404L11.3515 17.1935C11.1563 16.9983 11.1563 16.6817 11.3515 16.4864Z" fill="#2A2C31"/>
-</g>
-<path id="Ellipse 1 (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M16 29C23.1797 29 29 23.1797 29 16C29 8.8203 23.1797 3 16 3C8.8203 3 3 8.8203 3 16C3 23.1797 8.8203 29 16 29ZM16 30C23.732 30 30 23.732 30 16C30 8.26801 23.732 2 16 2C8.26801 2 2 8.26801 2 16C2 23.732 8.26801 30 16 30Z" fill="#2A2C31"/>
-</g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Arrow-l" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<style type="text/css">
+	
+	.st1{fill:#2A2C31;}
+</style>
+<g id="Arrow-down">
+		<g id="circle-arow">
+		<path id="Ellipse_1__x28_Stroke_x29_" class="st1" d="M16,2C8.3,2,2,8.3,2,16s6.3,14,14,14s14-6.3,14-14S23.7,2,16,2z M16,29
+			C8.8,29,3,23.2,3,16S8.8,3,16,3s13,5.8,13,13S23.2,29,16,29z"/>
+		<path id="arrow" class="st1" d="M20.7,17.2L16,21.8l-0.4-0.4l-4.3-4.3c-0.2-0.2-0.2-0.5,0-0.7c0.2-0.2,0.5-0.2,0.7,0l3.4,3.4V9
+			c0-0.3,0.2-0.5,0.5-0.5c0.3,0,0.5,0.2,0.5,0.5v10.9l3.4-3.4c0.2-0.2,0.5-0.2,0.7,0C20.8,16.7,20.8,17,20.7,17.2z"/>
+		</g>
 </g>
 </svg>

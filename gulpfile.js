@@ -2,8 +2,10 @@
 
 const source_folder = "src",
     project_folder = "dist",
+    nodeModules = 'node_modules',
     scriptsFileName = "scripts.min.js",
     stylesFileName = "style.min.css";
+
 
 let path = {
     build: {
@@ -20,6 +22,8 @@ let path = {
         css: source_folder + "/scss/style.scss",
         js: source_folder + "/js/main.js",
         modules: source_folder + "/js/modules/*.js",
+        gsap: nodeModules + "/gsap/gsap-core.js",
+        scrollTrigger: nodeModules + "/gsap/dist/ScrollTrigger.js",
         img: source_folder + "/img/**/*.+(png|jpg|gif|ico|svg|webp)",
         fonts: source_folder + "/fonts/*.(ttf|otf|woff|svg)"
     },
@@ -95,26 +99,25 @@ gulp.task("html", function() { // setting html
 
 gulp.task("js", function() {
     // setting js
-    return gulp.src([path.src.js, path.src.modules])
-        .pipe(rigger())
-        .pipe(sourcemaps.init())
-        .pipe(fileinclude({
-            prefix: '@',
-            basepath: '@file'
-        }))
+    return gulp.src([path.src.gsap, path.src.scrollTrigger, path.src.js, path.src.modules, ])
+
+    .pipe(sourcemaps.init())
         .pipe(babel({
             presets: ["@babel/preset-env"]
         }))
-        .pipe(uglify())
-        .pipe(sourcemaps.write('maps'))
-        .pipe(concat('scripts.min.js'))
+
+    .pipe(uglify())
+
+    .pipe(concat('scripts.min.js'))
+        .pipe(sourcemaps.mapSources(function(sourcePath, file) {
+            // source paths are prefixed with '../src/'
+            return '../src/' + sourcePath;
+        }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.js))
-        .pipe(browserSync.stream());
+        .pipe(browserSync.stream('../maps'));
+
 });
-
-
-
-
 
 //Styles Task
 gulp.task("css", function() { // setting css
@@ -159,19 +162,17 @@ gulp.task('otf', function() { // setting .otf to .ttf
         .pipe(gulp.dest(path.build.fonts));
 });
 
-gulp.task('fonts', async function() { // setting fonts
-        return gulp.src(path.src.fonts)
-            .pipe(gulp.dest(path.build.fonts));
-    })
-    // gulp.task('fonts', function() { // setting fonts => .ttf to .woff and .woff2
-    //     gulp.src(path.src.fonts)
-    //         .pipe(ttf2woff())
-    //         .pipe(gulp.dest(path.build.fonts));
-    //     gulp.src(path.src.fonts)
-    //         .pipe(ttf2woff2())
-    //         .pipe(gulp.dest(path.build.fonts));
 
-// });
+
+gulp.task('fonts', function() { // setting fonts => .ttf to .woff and .woff2
+    gulp.src([source_folder + "/fonts/*.ttf"])
+        .pipe(ttf2woff())
+        .pipe(gulp.dest(path.build.fonts));
+    gulp.src([source_folder + "/fonts/*.ttf"])
+        .pipe(ttf2woff2())
+        .pipe(gulp.dest(path.build.fonts));
+
+});
 
 gulp.task("svg", function() { // "gulp svg"
     return gulp.src([source_folder + "/img/svg/**/*.svg"])
@@ -191,7 +192,7 @@ gulp.task("svg", function() { // "gulp svg"
                 mode: {
                     stack: {
                         sprite: "../sprite.svg",
-
+                        //example: true,
                     },
                 },
             })
@@ -235,14 +236,15 @@ const fontsStyle = (done) => {
             for (var i = 0; i < items.length; i++) {
                 let fontname = items[i].split(".");
                 fontname = fontname[0];
-                let font = fontname.split("-")[0];
+                let font = fontname.split("-")[0],
+                    fontWide = font + '-' + fontname.split("-")[1];
                 let weight = checkWeight(fontname);
 
                 if (c_fontname != fontname) {
                     fs.appendFile(
                         srcFonts,
                         '@include font-face("' +
-                        font +
+                        fontWide +
                         '", "' +
                         fontname +
                         '", ' +

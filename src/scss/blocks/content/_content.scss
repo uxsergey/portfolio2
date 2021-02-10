@@ -1,32 +1,28 @@
-                                .content {
-                                    grid-area: content;
-                                    display: grid;
-                                    @include for-size (phone-only) {
-                                        min-width: calc(100% - 20px);
-                                        margin: 0 auto;
-                                    }
-                                    @include for-size (tablet-portrait-up) {
-                                        min-width: calc(100% - 40px);
-                                        margin: 0 auto;
-                                    }
-                                    grid-template-areas: 'about' 'service' 'works';
-                                    grid-template-rows: repeat(3, 1fr);
-                                    // padding: 0 1em;
-                                    &_center {
-                                        display: flex;
-                                        justify-content: center;
-                                        flex-direction: column;
-                                    }
-                                }
-                                
-                                .about {
-                                    grid-area: about;
-                                }
-                                
-                                .service {
-                                    grid-area: service;
-                                }
-                                
-                                .works {
-                                    grid-area: works;
-                                }
+.content {
+    grid-area: content;
+    display: grid;
+    @include for-size (tablet-portrait-up) {
+        min-width: calc(100% - 40px);
+        margin: 0 auto;
+    }
+    grid-template-areas: 'about' 'service' 'works';
+    grid-template-rows: repeat(3, 1fr);
+    // padding: 0 1em;
+    &_center {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+
+.about {
+    grid-area: about;
+}
+
+.service {
+    grid-area: service;
+}
+
+.works {
+    grid-area: works;
+}

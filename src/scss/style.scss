@@ -1,19 +1,26 @@
 //Varieables
 @import "vars/colors";
 @import "vars/sizes";
+@import "vars/spacing";
 //mixins
 @import "mixins/mixins";
 //Basics
+@import "base/reset";
 @import "base/basics";
 @import "base/grid";
+@import "base/typography";
 @import "base/fonts";
 @import "base/animations";
-@import "base/elements";
+//elements
+@import "elements/buttons";
+@import "elements/forms";
+@import "elements/list";
+@import "elements/navigation";
+//Header
+@import "blocks/header/header";
 //Content
 @import "blocks/content/content";
 @import "blocks/content/hero";
-//Hero
-@import "blocks/header/header";
 //Sidebar
 @import "blocks/sidebar/sidebar";
 //Footer
