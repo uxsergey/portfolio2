@@ -10,24 +10,51 @@
 </head>
 
 <body role="document" data-theme="default">
-    <header class="header sticky" data-theme="light" role="heading">
+    <header class="header sticky header-exclusion" data-theme="light" role="heading">
         <div class="header_container">
-            <div class="logo" role="logo">
+            <div class="logo header-logo" role="logo">
                 <svg viewBox="0 0 70 70">
                     <circle cx="32" cy="32" r="32"  />
                   </svg>
 
             </div>
             <nav role="navigation" aria-label="Main" class=" navigation">
-                <ul>
-                    <li><a href="#">link 1</a></li>
-                    <li><a href="#">link 2</a></li>
-                    <li><a href="#">link 3</a></li>
+                <ul class="main-nav">
+                    <li class="menu-phone"><a href="#">Menu</a></li>
+                    <li><a class="nav-link" href="#">About me</a></li>
+                    <li><a class="nav-link" href="#">Services</a></li>
+                    <li><a class="nav-link" href="#">Works</a></li>
+
                 </ul>
             </nav>
         </div>
     </header>
-    <section data-theme="light" class="hero bg-accent " role="banner">
+    <!-- Fullscreen menu mobile only -->
+
+    <div class="fullscreen-menu--overlay">
+
+        <div class="fullscreen-menu">
+            <div class="grid fullscreen-container">
+                <div class="menu-container">
+                    <ul class="menu-nav">
+                        <li><a href="#list-1" class="menu-link">About me</a></li>
+                        <li><a href="#list-2" class="menu-link">Services</a></li>
+                        <li><a href="#list-3" class="menu-link">Works</a></li>
+                    </ul>
+                </div>
+                <div class="menu-content">
+                    <div class="menu-content-mail">
+                        <p>mail@mail</p>
+                    </div>
+                    <div class="menu-content-adress">
+                        <p>adress</p>
+                    </div>
+                    <div class="menu-content-phone"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section data-theme="light" class="hero bg-black " role="banner">
         <div class="hero-container">
             <h1>Hello world!</h1>
             <h3>I'm multidisciplinary UI Designer based in Frankfurt</h3>
@@ -44,8 +71,8 @@
                         </div>
                         <ul class="indicator-names">
                             <li data-select="1" class="active">About me</li>
-                            <li data-select="2" class="off"> Services</li>
-                            <li data-select="3" class="off">Cases</li>
+                            <li data-select="2"> Services</li>
+                            <li data-select="3">Cases</li>
                         </ul>
                     </div>
 
@@ -60,18 +87,21 @@
             <div class="service content_center">
                 <div class="grid grid-2-col">
                     <div class="col-1-2 sticky-col ">
-                        <ul class="list list-big-title sticky-col-mid">
-                            <li><a href="#list-1" class="list-link active">Design</a></li>
-                            <li><a href="#list-2" class="list-link ">Development</a></li>
-                            <li><a href="#list-3" class="list-link ">Stratagy</a></li>
-                        </ul>
+                        <div class="sticky-col-container">
+                            <ul class="list list-big-title sticky-col-mid">
+                                <li><a href="#list-1" class="list-link active">Design</a></li>
+                                <li><a href="#list-2" class="list-link ">Development</a></li>
+                                <li><a href="#list-3" class="list-link ">Stratagy</a></li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="col-2-2 sticky-col-description">
 
                         <ul id="list-1" class="list list-description">
                             <li class="list-header active">Design</li>
-                            <li><span>Web Design</span></li>
                             <li><span>UI & UX</span></li>
+                            <li><span>Prototyping</span></li>
+                            <li><span>Wireframes</span></li>
                             <li><span>Visual identity</span></li>
                             <li><span>Design Systems</span></li>
                             <li><span>Illustration & Animation</span></li>
@@ -80,15 +110,17 @@
                             <li class="list-header">Development</li>
                             <li><span>HTML CSS</span></li>
                             <li><span>JavaScript</span></li>
-                            <li><span>Responsive Web Design</span></li>
+                            <li><span>Responsive Development</span></li>
+                            <li><span>Interactive Prototyping</span></li>
                             <li><span>Git</span></li>
                         </ul>
                         <ul id="list-3" class="list list-description">
                             <li class="list-header">Stratagy</li>
                             <li><span>Idea Generation</span></li>
                             <li><span>Research & Insights</span></li>
-                            <li><span>Brand strategy & vision</span></li>
-                            <li><span>Brand Identity</span></li>
+                            <li><span>A/B Testing</span></li>
+                            <li><span>Brand Guidelines</span></li>
+                            <li><span>Logo & Identity</span></li>
                             <li><span>Consulting</span></li>
                         </ul>
                     </div>
@@ -108,10 +140,10 @@
                 </div>
                 <div class="footer-content">
                     <nav role="navigation" aria-label="Main" class="footer navigation">
-                        <ul>
-                            <li><a href="">link 1</a></li>
-                            <li><a href="">link 2</a></li>
-                            <li><a href="">link 3</a></li>
+                        <ul class="main-nav">
+                            <li><a class="nav-link" href="">link 1</a></li>
+                            <li><a class="nav-link" href="">link 2</a></li>
+                            <li><a class="nav-link" href="">link 3</a></li>
                         </ul>
                     </nav>
                     <p>2021</p>

@@ -4,9 +4,23 @@
     @include for-size (tablet-portrait-up) {
         min-width: calc(100% - 40px);
         margin: 0 auto;
+        @include for-size (tablet-landscape-up) {
+            min-width: calc(100% - 10px);
+        }
     }
     grid-template-areas: 'about' 'service' 'works';
-    grid-template-rows: repeat(3, 1fr);
+    @include for-size (desktop-up) {
+        grid-template-rows: repeat(3, .9fr);
+    }
+    @include for-size (tablet-portrait-up) {
+        @include for-size (tablet-landscape-up) {
+            grid-template-rows: repeat(3, .6fr);
+        }
+        grid-template-rows: repeat(3, .55fr);
+    }
+    @include for-size (phone-only) {
+        grid-template-rows: repeat(3, 1fr);
+    }
     // padding: 0 1em;
     &_center {
         display: flex;

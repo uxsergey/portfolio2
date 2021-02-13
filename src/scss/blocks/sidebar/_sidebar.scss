@@ -9,10 +9,10 @@
         width: 100%;
         position: sticky;
         top: 3em;
-        background: alpha(var(--white), 0.5);
     }
     .sidebar-container {
         @include for-size (tablet-portrait-up) {
+            @include font(var(--text-font), var(--medium), var(--text-sm), var(--gray-800), var(--body-line-height-md));
             height: 100%;
             display: flex;
             justify-content: center;
@@ -30,10 +30,10 @@
                 @include for-size (phone-only) {
                     width: 100%;
                 }
-                @include font(var(--text-font), var(--medium), var(--text-sm), inherit, var(--body-line-height-sm)) width: 15em;
+                width: calc(100vh / 3);
                 display: flex;
                 flex-direction: row;
-                gap: 10px;
+                gap: var(--rem);
                 align-items: center;
                 justify-content: space-between;
                 white-space: nowrap;
@@ -54,11 +54,11 @@
 }
 
 .indicator-names {
+    @include font(var(--text-font), var(--medium), var(--text-md), inherit, var(--body-line-height-md));
     list-style: none;
-    gap: 20px;
     margin: 0;
     padding: 0;
-    .off {
+    li {
         display: none;
     }
     .active {

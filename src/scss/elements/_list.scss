@@ -1,3 +1,35 @@
+.sticky-col {
+    &-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1em 0;
+    position: sticky;
+    top: 25%;
+    @include for-size (desktop-up) {
+        height: calc(100vh - calc(10% * 3));
+    }
+    @include for-size (tablet-portrait-up) {
+        height: calc(100vh - calc(9.5% * 3));
+    }
+    &-mid {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    &-description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 5em;
+    }
+}
+
 .list {
     margin: 0;
     padding: 0;
@@ -5,7 +37,7 @@
     &-header {
         @include for-size (phone-only) {
             display: block;
-            @include font(var(--heading-font), var(--medium), var(--text-xxxxl), var(--gray-900), var(--heading-line-height-xl));
+            @include font(var(--heading-font), var(--medium), var(--text-xxl), var(--gray-900), var(--heading-line-height-xl));
             text-transform: uppercase;
             @include font-stroke(var(--gray-100), transparent, 1px);
             &.active {
@@ -13,7 +45,12 @@
             }
         }
         @include for-size (tablet-portrait-up) {
-            display: none;
+            @include font(var(--heading-font), var(--medium), var(--text-xl), var(--gray-900), var(--heading-line-height-xl));
+            display: block;
+            @include for-size (tablet-landscape-up) {
+                @include font(var(--heading-font), var(--medium), var(--text-xxl), var(--gray-900), var(--heading-line-height-xl));
+                display: none;
+            }
         }
     }
     &-description {
@@ -30,10 +67,24 @@
     &-big-title {
         @include for-size (tablet-portrait-up) {
             li {
-                display: block;
+                display: flex;
+                flex-direction: row;
+                padding: 5px;
                 width: 100%;
+                align-items: flex-start;
                 .list-link {
-                    @include font(var(--heading-font), var(--medium), var(--text-xxxxl), var(--gray-900), var(--heading-line-height-xl));
+                    @include for-size (tablet-portrait-up) {
+                        display: none;
+                        @include for-size (tablet-landscape-up) {
+                            display: block;
+                        }
+                        @include font(var(--heading-font), var(--medium), var(--text-xxxl), var(--gray-900), var(--heading-line-height-xl));
+                    }
+                    @include for-size (desktop-up) {
+                        display: block;
+                        @include font(var(--heading-font), var(--medium), var(--text-xxxxl), var(--gray-900), var(--heading-line-height-xl));
+                    }
+                    @include font(var(--heading-font), var(--medium), var(--text-xl), var(--gray-900), var(--heading-line-height-xl));
                     text-decoration: none;
                     text-transform: uppercase;
                     transition: all 0.2s ease-out;

@@ -4,8 +4,14 @@
         width: 100%;
         margin: 0 auto;
         &-2-col {
-            grid-template-columns: 1fr 1fr;
-            &.col-1-1+.col-1-2 {
+            @include for-size (tablet-landscape-up) {
+                grid-template-columns: 1fr 1fr;
+            }
+            @include for-size (phone-only) {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr;
+            }
+            .col-1-2+.col-2-2 {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -29,22 +35,4 @@
 .sticky {
     position: sticky;
     top: 0;
-}
-
-.sticky-col {
-    height: 20%;
-    position: sticky;
-    top: 50%;
-    &-mid {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    &-description {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        row-gap: 5em;
-    }
 }
